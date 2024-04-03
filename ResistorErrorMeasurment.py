@@ -63,27 +63,85 @@ def Calculate_Resistance_R():
 
 def Koefficient_Calcul():
     global All_Middle_Koef_For_R1, All_Middle_Koef_For_R2, All_Middle_Koef_For_R3
-    for i in range(3):
-        All_Middle_Koef_For_R1 = np.append(All_Middle_Koef_For_R1,
-                                           Calculate_Koef(All_Resistors1_Error[0], All_Resistors1_Error[0],
-                                                          All_Resistors2_Error[0],
-                                                          All_Resistors3_Error[0]))
-        # All_Middle_Koef_For_R1.np.array(
-        #     Calculate_Koef(All_Resistors1_Error[0], All_Resistors1_Error[0], All_Resistors2_Error[0],
-        #                    All_Resistors3_Error[0]))
-        All_Middle_Koef_For_R2 = np.append(All_Middle_Koef_For_R2,
-                                           Calculate_Koef(All_Resistors1_Error[1], All_Resistors1_Error[1],
-                                                          All_Resistors2_Error[1],
-                                                          All_Resistors3_Error[1]))
-        # All_Middle_Koef_For_R2.np.array(
-        #     Calculate_Koef(All_Resistors1_Error[1], All_Resistors1_Error[1], All_Resistors2_Error[1],
-        #                    All_Resistors3_Error[1]))
-        All_Middle_Koef_For_R3 = np.append(All_Middle_Koef_For_R3,
-                                           Calculate_Koef(All_Resistors1_Error[2], All_Resistors1_Error[2],
-                                                          All_Resistors2_Error[2],
-                                                          All_Resistors3_Error[2]))
+    # for i in range(3):
+    # All_Middle_Koef_For_R1 = np.append(All_Middle_Koef_For_R1,
+    #                                    Calculate_Koef(All_Resistors1_Error[0], All_Resistors1_Error[0],
+    #                                                   All_Resistors2_Error[0],
+    #                                                   All_Resistors3_Error[0]))
+    #
+    # All_Middle_Koef_For_R2 = np.append(All_Middle_Koef_For_R2,
+    #                                    Calculate_Koef(All_Resistors1_Error[1], All_Resistors1_Error[1],
+    #                                                   All_Resistors2_Error[1],
+    #                                                   All_Resistors3_Error[1]))
+    #
+    # All_Middle_Koef_For_R3 = np.append(All_Middle_Koef_For_R3,
+    #                                    Calculate_Koef(All_Resistors1_Error[2], All_Resistors1_Error[2],
+    #                                                   All_Resistors2_Error[2],
+    #                                                   All_Resistors3_Error[2]))
+    All_Middle_Koef_For_R1 = np.append(All_Middle_Koef_For_R1,
+                                       Calculate_Koef(All_Resistors1_Error[0], All_Resistors1_Error[0],
+                                                      All_Resistors2_Error[0],
+                                                      All_Resistors3_Error[0]))
+    # All_Middle_Koef_For_R1.np.array(
+    #     Calculate_Koef(All_Resistors1_Error[0], All_Resistors1_Error[0], All_Resistors2_Error[0],
+    #                    All_Resistors3_Error[0]))
+    All_Middle_Koef_For_R1 = np.append(All_Middle_Koef_For_R1,
+                                       Calculate_Koef(All_Resistors2_Error[0], All_Resistors1_Error[0],
+                                                      All_Resistors2_Error[0],
+                                                      All_Resistors3_Error[0]))
+    # All_Middle_Koef_For_R1.np.array(
+    #     Calculate_Koef(All_Resistors2_Error[0], All_Resistors1_Error[0], All_Resistors2_Error[0],
+    #                    All_Resistors3_Error[0]))
+    All_Middle_Koef_For_R1 = np.append(All_Middle_Koef_For_R1,
+                                       Calculate_Koef(All_Resistors3_Error[0], All_Resistors1_Error[0],
+                                                      All_Resistors2_Error[0],
+                                                      All_Resistors3_Error[0]))
+    # All_Middle_Koef_For_R1.np.array(
+    #     Calculate_Koef(All_Resistors3_Error[0], All_Resistors1_Error[0], All_Resistors2_Error[0],
+    #                    All_Resistors3_Error[0]))
+
+    All_Middle_Koef_For_R2 = np.append(All_Middle_Koef_For_R2,
+                                       Calculate_Koef(All_Resistors1_Error[1], All_Resistors1_Error[1],
+                                                      All_Resistors2_Error[1],
+                                                      All_Resistors3_Error[1]))
+    # All_Middle_Koef_For_R2.np.array(
+    #     Calculate_Koef(All_Resistors1_Error[1], All_Resistors1_Error[1], All_Resistors2_Error[1],
+    #                    All_Resistors3_Error[1]))
+    All_Middle_Koef_For_R2 = np.append(All_Middle_Koef_For_R2,
+                                       Calculate_Koef(All_Resistors2_Error[1], All_Resistors1_Error[1],
+                                                      All_Resistors2_Error[1],
+                                                      All_Resistors3_Error[1]))
+    # All_Middle_Koef_For_R2.np.array(
+    #     Calculate_Koef(All_Resistors2_Error[1], All_Resistors1_Error[1], All_Resistors2_Error[1],
+    #                    All_Resistors3_Error[1]))
+    All_Middle_Koef_For_R2 = np.append(All_Middle_Koef_For_R2,
+                                       Calculate_Koef(All_Resistors3_Error[1], All_Resistors1_Error[1],
+                                                      All_Resistors2_Error[1],
+                                                      All_Resistors3_Error[1]))
+    # All_Middle_Koef_For_R2.np.array(
+    #     Calculate_Koef(All_Resistors3_Error[1], All_Resistors1_Error[1], All_Resistors2_Error[1],
+    #                    All_Resistors3_Error[1]))
+
+    All_Middle_Koef_For_R3 = np.append(All_Middle_Koef_For_R3,
+                                       Calculate_Koef(All_Resistors1_Error[2], All_Resistors1_Error[2],
+                                                      All_Resistors2_Error[2],
+                                                      All_Resistors3_Error[2]))
     # All_Middle_Koef_For_R3.np.array(
     #     Calculate_Koef(All_Resistors1_Error[2], All_Resistors1_Error[2], All_Resistors2_Error[2],
+    #                    All_Resistors3_Error[2]))
+    All_Middle_Koef_For_R3 = np.append(All_Middle_Koef_For_R3,
+                                       Calculate_Koef(All_Resistors2_Error[2], All_Resistors1_Error[2],
+                                                      All_Resistors2_Error[2],
+                                                      All_Resistors3_Error[2]))
+    # All_Middle_Koef_For_R3.np.array(
+    #     Calculate_Koef(All_Resistors2_Error[2], All_Resistors1_Error[2], All_Resistors2_Error[2],
+    #                    All_Resistors3_Error[2]))
+    All_Middle_Koef_For_R3 = np.append(All_Middle_Koef_For_R3,
+                                       Calculate_Koef(All_Resistors3_Error[2], All_Resistors1_Error[2],
+                                                      All_Resistors2_Error[2],
+                                                      All_Resistors3_Error[2]))
+    # All_Middle_Koef_For_R3.np.array(
+    #     Calculate_Koef(All_Resistors3_Error[2], All_Resistors1_Error[2], All_Resistors2_Error[2],
     #                    All_Resistors3_Error[2]))
 
 
@@ -97,7 +155,7 @@ def Calculate_Koef(Error_R, R1, R2, R3):
 
 Calculate_Resistance_R()
 Koefficient_Calcul()
-print(All_Resistors1_Error)
+print(All_Resistors2_Error)
 True_Error1 = Calculate_Koef(1, All_Middle_Koef_For_R1[0],
                              All_Middle_Koef_For_R1[1], All_Middle_Koef_For_R1[2])
 True_Error2 = Calculate_Koef(1, All_Middle_Koef_For_R2[0],
