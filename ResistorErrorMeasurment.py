@@ -1,5 +1,4 @@
 import math
-
 import numpy as np
 
 # 1 - Напряжение с генератора и погрешность; 2, 3, 4 - Напряжения на разисторах и погрешность; 5 - Сила тока и погрешность
@@ -7,76 +6,78 @@ persons = {'Data_Person1': np.array([[5.1, 0.2], [2.3, 0.05], [1.1, 0.05], [1.7,
            'Data_Person2': np.array([[11.8, 0.2], [5.3, 0.20], [2.6, 0.05], [4.0, 0.20], [475, 50]]),  # Голубев А.
            'Data_Person3': np.array([[21.8, 0.5], [9.7, 0.20], [4.8, 0.20], [7.5, 0.20], [825, 50]])}  # Бушуев Д.
 
-All_Resistors1 = np.array([], float)
-All_Resistors2 = np.array([], float)
-All_Resistors3 = np.array([], float)
+resistors = {'resistor1': np.array([], float),
+             'resistor2': np.array([], float),
+             'resistor3': np.array([], float)}
 
-All_Resistors1_Error = np.array([], float)
-All_Resistors2_Error = np.array([], float)
-All_Resistors3_Error = np.array([], float)
+error_resistors = {'resistor1': np.array([], float),
+                   'resistor2': np.array([], float),
+                   'resistor3': np.array([], float)}
 
-All_Middle_Koef_For_R1 = np.array([], float)
-All_Middle_Koef_For_R2 = np.array([], float)
-All_Middle_Koef_For_R3 = np.array([], float)
+middle_coefficient = {'middle_R1': np.array([], float),
+                      'middle_R2': np.array([], float),
+                      'middle_R3': np.array([], float)}
 
-True_Error1 = 0
-True_Error2 = 0
-True_Error3 = 0
+true_resistors = {'resistor1': 0.0,
+                  'resistor2': 0.0,
+                  'resistor3': 0.0}
+
+true_error_resistors = {'resistor1': 0.0,
+                        'resistor2': 0.0,
+                        'resistor3': 0.0}
 
 
 def Calculate_Resistance_R():
-    global All_Resistors1, All_Resistors1_Error, All_Resistors2, \
-        All_Resistors2_Error, All_Resistors3, All_Resistors3_Error
+    global resistors, error_resistors
     for i in range(1, 4, 1):
         R = persons.get(f'Data_Person{i}')[1][0] / (persons.get(f'Data_Person{i}')[4][0] * (10 ** -6))
-        All_Resistors1 = np.append(All_Resistors1, R)
-        All_Resistors1_Error = np.append(All_Resistors1_Error,
-                                         Calculate_Resistance_Error(persons.get(f'Data_Person{i}')[1][1],
-                                                                    persons.get(f'Data_Person{i}')[1][0],
-                                                                    persons.get(f'Data_Person{i}')[4][1],
-                                                                    persons.get(f'Data_Person{i}')[4][0],
-                                                                    R))
+        resistors['resistor1'] = np.append(resistors.get('resistor1'), R)
+        error_resistors['resistor1'] = np.append(error_resistors.get('resistor1'),
+                                                 Calculate_Resistance_Error(persons.get(f'Data_Person{i}')[1][1],
+                                                                            persons.get(f'Data_Person{i}')[1][0],
+                                                                            persons.get(f'Data_Person{i}')[4][1],
+                                                                            persons.get(f'Data_Person{i}')[4][0],
+                                                                            R))
 
         R = persons.get(f'Data_Person{i}')[2][0] / (persons.get(f'Data_Person{i}')[4][0] * (10 ** -6))
-
-        All_Resistors2 = np.append(All_Resistors2, R)
-        All_Resistors2_Error = np.append(All_Resistors2_Error,
-                                         Calculate_Resistance_Error(persons.get(f'Data_Person{i}')[2][1],
-                                                                    persons.get(f'Data_Person{i}')[2][0],
-                                                                    persons.get(f'Data_Person{i}')[4][1],
-                                                                    persons.get(f'Data_Person{i}')[4][0],
-                                                                    R))
+        resistors['resistor2'] = np.append(resistors.get('resistor2'), R)
+        error_resistors['resistor2'] = np.append(error_resistors.get('resistor2'),
+                                                 Calculate_Resistance_Error(persons.get(f'Data_Person{i}')[2][1],
+                                                                            persons.get(f'Data_Person{i}')[2][0],
+                                                                            persons.get(f'Data_Person{i}')[4][1],
+                                                                            persons.get(f'Data_Person{i}')[4][0],
+                                                                            R))
 
         R = persons.get(f'Data_Person{i}')[3][0] / (persons.get(f'Data_Person{i}')[4][0] * (10 ** -6))
-        All_Resistors3 = np.append(All_Resistors3, R)
-        All_Resistors3_Error = np.append(All_Resistors3_Error,
-                                         Calculate_Resistance_Error(persons.get(f'Data_Person{i}')[3][1],
-                                                                    persons.get(f'Data_Person{i}')[3][0],
-                                                                    persons.get(f'Data_Person{i}')[4][1],
-                                                                    persons.get(f'Data_Person{i}')[4][0],
-                                                                    R))
+        resistors['resistor3'] = np.append(resistors.get('resistor3'), R)
+        error_resistors['resistor3'] = np.append(error_resistors.get('resistor3'),
+                                                 Calculate_Resistance_Error(persons.get(f'Data_Person{i}')[3][1],
+                                                                            persons.get(f'Data_Person{i}')[3][0],
+                                                                            persons.get(f'Data_Person{i}')[4][1],
+                                                                            persons.get(f'Data_Person{i}')[4][0],
+                                                                            R))
 
 
 def Koefficient_Calcul():
-    global All_Middle_Koef_For_R1, All_Middle_Koef_For_R2, All_Middle_Koef_For_R3
+    global middle_coefficient
     for i in range(3):
-        All_Middle_Koef_For_R1 = np.append(All_Middle_Koef_For_R1,
-                                           Calculate_Koef(All_Resistors1_Error[i],
-                                                          All_Resistors1_Error[0],
-                                                          All_Resistors1_Error[1],
-                                                          All_Resistors1_Error[2]))
+        middle_coefficient['middle_R1'] = np.append(middle_coefficient.get('middle_R1'),
+                                                    Calculate_Koef(error_resistors.get('resistor1')[i],
+                                                                   error_resistors.get('resistor1')[0],
+                                                                   error_resistors.get('resistor1')[1],
+                                                                   error_resistors.get('resistor1')[2]))
 
-        All_Middle_Koef_For_R2 = np.append(All_Middle_Koef_For_R2,
-                                           Calculate_Koef(All_Resistors2_Error[i],
-                                                          All_Resistors2_Error[0],
-                                                          All_Resistors2_Error[1],
-                                                          All_Resistors2_Error[2]))
+        middle_coefficient['middle_R2'] = np.append(middle_coefficient.get('middle_R2'),
+                                                    Calculate_Koef(error_resistors.get('resistor2')[i],
+                                                                   error_resistors.get('resistor2')[0],
+                                                                   error_resistors.get('resistor2')[1],
+                                                                   error_resistors.get('resistor2')[2]))
 
-        All_Middle_Koef_For_R3 = np.append(All_Middle_Koef_For_R3,
-                                           Calculate_Koef(All_Resistors3_Error[i],
-                                                          All_Resistors3_Error[0],
-                                                          All_Resistors3_Error[1],
-                                                          All_Resistors3_Error[2]))
+        middle_coefficient['middle_R3'] = np.append(middle_coefficient.get('middle_R3'),
+                                                    Calculate_Koef(error_resistors.get('resistor3')[i],
+                                                                   error_resistors.get('resistor3')[0],
+                                                                   error_resistors.get('resistor3')[1],
+                                                                   error_resistors.get('resistor3')[2]))
 
 
 def Calculate_Resistance_Error(dU_HAst, U, dIck, I, R):
@@ -87,49 +88,72 @@ def Calculate_Koef(Error_R, R1, R2, R3):
     return (1 / (Error_R ** 2)) / (1 / (R1 ** 2) + 1 / (R2 ** 2) + 1 / (R3 ** 2))
 
 
-def Calculate_Result_Resistanse(R1, R2, R3):
+def Calculate_Result_Resistance(resistor_num):
+    R = 0.0
+    for i in range(3):
+        R += middle_coefficient.get(f'middle_R{resistor_num}')[i] * resistors.get(f'resistor{resistor_num}')[i]
+    return R
+
+
+def Calculate_Result_Error_Resistanse(R1, R2, R3):
     return 1 / math.sqrt(1 / (R1 ** 2) + 1 / (R2 ** 2) + 1 / (R3 ** 2))
 
 
 Calculate_Resistance_R()
 Koefficient_Calcul()
 
-True_Error1 = Calculate_Result_Resistanse(All_Middle_Koef_For_R1[0],
-                                          All_Middle_Koef_For_R1[1], All_Middle_Koef_For_R1[2])
-
-True_Error2 = Calculate_Result_Resistanse(All_Middle_Koef_For_R2[0],
-                                          All_Middle_Koef_For_R2[1], All_Middle_Koef_For_R2[2])
-
-True_Error3 = Calculate_Result_Resistanse(All_Middle_Koef_For_R3[0],
-                                          All_Middle_Koef_For_R3[1], All_Middle_Koef_For_R3[2])
+for j in range(1, 4):
+    true_resistors[f"resistor{j}"] = Calculate_Result_Resistance(j)
+    true_error_resistors[f"resistor{j}"] = \
+        Calculate_Result_Error_Resistanse(error_resistors.get(f'resistor{j}')[0],
+                                          error_resistors.get(f'resistor{j}')[1],
+                                          error_resistors.get(f'resistor{j}')[2])
 
 print("Resistor 1:")
-print(f'Measurement 1 = {All_Resistors1[0]} '
-      f'Measurement 2 = {All_Resistors1[1]} '
-      f'Measurement 3 = {All_Resistors1[2]}')
+print(f'Measurement 1 = {resistors.get("resistor1")[0]} '
+      f'Measurement 2 = {resistors.get("resistor1")[1]} '
+      f'Measurement 3 = {resistors.get("resistor1")[2]}')
 
-print(f'Measurement error 1 = {All_Resistors1_Error[0]} Measurement error 2 = {All_Resistors1_Error[1]} '
-      f'Measurement error 3 = {All_Resistors1_Error[2]}')
+print(f'Measurement error 1 = {error_resistors.get("resistor1")[0]} '
+      f'Measurement error 2 = {error_resistors.get("resistor1")[1]} '
+      f'Measurement error 3 = {error_resistors.get("resistor1")[2]}')
 
-print(f'Middle coefficient 1 = {All_Middle_Koef_For_R1[0]} '
-      f'Middle coefficient 2 = {All_Middle_Koef_For_R1[1]} '
-      f'Middle coefficient 3 = {All_Middle_Koef_For_R1[2]}')
+print(f'Middle coefficient 1 = {middle_coefficient.get("middle_R1")[0]} '
+      f'Middle coefficient 2 = {middle_coefficient.get("middle_R1")[1]} '
+      f'Middle coefficient 3 = {middle_coefficient.get("middle_R1")[2]}')
+
+print(f'Result_R1 = {true_resistors.get("resistor1")}\n'
+      f'Result error R1 = {true_error_resistors.get("resistor1")}\n')
 
 
-print("User 2:")
-print("Resistor 1 = ", All_Resistors2[0], "Resistor 2 = ", All_Resistors2[1], "Resistor 3 = ", All_Resistors2[2])
-print("Resistor Error 1 = ", All_Resistors2_Error[0], "Resistor Error 2 = ", All_Resistors2_Error[1],
-      "Resistor Error 3 = ", All_Resistors2_Error[2])
-print("Koef_Resistor1 = ", All_Middle_Koef_For_R1[1], "Koef_Resistor2 = ", All_Middle_Koef_For_R2[1],
-      "Koef_Resistor3 = ", All_Middle_Koef_For_R3[1])
+print("Resistor 2:")
+print(f'Measurement 1 = {resistors.get("resistor2")[0]} '
+      f'Measurement 2 = {resistors.get("resistor2")[1]} '
+      f'Measurement 3 = {resistors.get("resistor2")[2]}')
 
-print("User 3:")
-print("Resistor 1 = ", All_Resistors3[0], "Resistor 2 = ", All_Resistors3[1], "Resistor 3 = ", All_Resistors3[2])
-print("Resistor Error 1 = ", All_Resistors3_Error[0], "Resistor Error 2 = ", All_Resistors3_Error[1],
-      "Resistor Error 3 = ", All_Resistors3_Error[2])
-print("Koef_Resistor1 = ", All_Middle_Koef_For_R1[2], "Koef_Resistor2 = ", All_Middle_Koef_For_R2[2],
-      "Koef_Resistor3 = ", All_Middle_Koef_For_R3[2])
+print(f'Measurement error 1 = {error_resistors.get("resistor2")[0]} '
+      f'Measurement error 2 = {error_resistors.get("resistor2")[1]} '
+      f'Measurement error 3 = {error_resistors.get("resistor2")[2]}')
 
-print("Result_Error_R1 = ", True_Error1)
-print("Result_Error_R2 = ", True_Error2)
-print("Result_Error_R3 = ", True_Error3)
+print(f'Middle coefficient 1 = {middle_coefficient.get("middle_R2")[0]} '
+      f'Middle coefficient 2 = {middle_coefficient.get("middle_R2")[1]} '
+      f'Middle coefficient 3 = {middle_coefficient.get("middle_R2")[2]}')
+
+print(f'Result R2 = {true_resistors.get("resistor2")}\n'
+      f'Result error R2 = {true_error_resistors.get("resistor2")}\n')
+
+print("Resistor 3:")
+print(f'Measurement 1 = {resistors.get("resistor3")[0]} '
+      f'Measurement 2 = {resistors.get("resistor3")[1]} '
+      f'Measurement 3 = {resistors.get("resistor3")[2]}')
+
+print(f'Measurement error 1 = {error_resistors.get("resistor3")[0]} '
+      f'Measurement error 2 = {error_resistors.get("resistor3")[1]} '
+      f'Measurement error 3 = {error_resistors.get("resistor3")[2]}')
+
+print(f'Middle coefficient 1 = {middle_coefficient.get("middle_R3")[0]} '
+      f'Middle coefficient 2 = {middle_coefficient.get("middle_R3")[1]} '
+      f'Middle coefficient 3 = {middle_coefficient.get("middle_R3")[2]}')
+
+print(f'Result R3 = {true_resistors.get("resistor3")}\n'
+      f'Result error R3 = {true_error_resistors.get("resistor3")}\n')

@@ -52,6 +52,15 @@ def calc_resistor():
                                                                              persons.get(f'Data_Person{i}')[4][0],
                                                                              R))
 
+        R = persons.get(f'Data_Person{i}')[2][0] / (persons.get(f'Data_Person{i}')[4][0] * (10 ** -6))
+        resistors['resistors2'] = np.append(resistors.get('resistors2'), R)
+        error_resistors['resistors2'] = np.append(error_resistors.get('resistors2'),
+                                                  Calculate_Resistance_Error(persons.get(f'Data_Person{i}')[2][1],
+                                                                             persons.get(f'Data_Person{i}')[2][0],
+                                                                             persons.get(f'Data_Person{i}')[4][1],
+                                                                             persons.get(f'Data_Person{i}')[4][0],
+                                                                             R))
+
 
 def calc_coeff():
     global middle_coefficient, error_resistors
@@ -62,6 +71,13 @@ def calc_coeff():
                                                                    error_resistors.get('resistors1')[1],
                                                                    error_resistors.get('resistors1')[2],
                                                                    error_resistors.get('resistors1')[3]))
+
+        middle_coefficient['middle_R2'] = np.append(middle_coefficient.get('middle_R2'),
+                                                    Calculate_Koef(error_resistors.get('resistors2')[i],
+                                                                   error_resistors.get('resistors2')[0],
+                                                                   error_resistors.get('resistors2')[1],
+                                                                   error_resistors.get('resistors2')[2],
+                                                                   error_resistors.get('resistors2')[3]))
 
 
 calc_resistor()
