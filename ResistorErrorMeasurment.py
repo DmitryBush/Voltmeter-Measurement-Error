@@ -98,6 +98,7 @@ def Calculate_Koef(Error_R, R1, R2, R3):
 Calculate_Resistance_R()
 Koefficient_Calcul()
 print(All_Resistors1_Error)
+
 True_Error1 = Calculate_Koef(1, All_Middle_Koef_For_R1[0],
                              All_Middle_Koef_For_R1[1], All_Middle_Koef_For_R1[2])
 True_Error2 = Calculate_Koef(1, All_Middle_Koef_For_R2[0],
