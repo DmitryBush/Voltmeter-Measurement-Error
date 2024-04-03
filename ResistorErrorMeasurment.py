@@ -4,27 +4,27 @@ import numpy as np
 
 # 1 - Напряжение с генератора и погрешность; 2, 3, 4 - Напряжения на разисторах и погрешность; 5 - Сила тока и погрешность
 
-Data_Person1 = np.array([[7, ...], [16.5, ...], [11, ...], [7,...], [27.5, ...]])  #Черемин Д.
-Data_Person2 = np.array([])                                                 #Голубев А.
-Data_Person3 = np.array([])                                                 #Бушуев Д.
+Data_Person1 = np.array([[5.1, 0.2], [2.3, 0.05], [1.1, 0.05], [1.7,0.05], [193, 5]])  #Черемин Д.
+Data_Person2 = np.array([[11.8, 0.2], [5.3, 0.20], [2.6, 0.05], [4.0,0.20], [475, 50]])  #Голубев А.
+Data_Person3 = np.array([[21.8, 0.5], [9.7, 0.20], [4.8, 0.20], [7.5,0.20], [825, 50]])                                                 #Бушуев Д.
 
 All_Data_Person = [Data_Person1, Data_Person2, Data_Person3]
 
 
 
 
-All_Resistors1 = np.array()
-All_Resistors2 = np.array()
-All_Resistors3 = np.array()
+All_Resistors1 = np.array([])
+All_Resistors2 = np.array([])
+All_Resistors3 = np.array([])
 
 
-All_Resistors1_Error = np.array()
-All_Resistors2_Error = np.array()
-All_Resistors3_Error = np.array()
+All_Resistors1_Error = np.array([])
+All_Resistors2_Error = np.array([])
+All_Resistors3_Error = np.array([])
 
-All_Middle_Koef_For_R1 = np.array()
-All_Middle_Koef_For_R2 = np.array()
-All_Middle_Koef_For_R3 = np.array()
+All_Middle_Koef_For_R1 = np.array([])
+All_Middle_Koef_For_R2 = np.array([])
+All_Middle_Koef_For_R3 = np.array([])
 
 True_Error1 = 0
 True_Error2 = 0
@@ -34,13 +34,16 @@ True_Error3 = 0
 
 def Calculate_Resistance_R():
     for i in range(1,4,1):
-        R = All_Resistors1.np.append(Data_Person1[i][0]/(Data_Person1[4][0] * (10**-6)))
+        All_Resistors1.np.append(Data_Person1[i][0]/(Data_Person1[4][0] * (10**-6)))
+        R = Data_Person1[i][0]/(Data_Person1[4][0] * (10**-6))
         All_Resistors1_Error.np.array(Calculate_Resistance_Error(Data_Person1[i][1],Data_Person1[i][0], Data_Person1[4][1], Data_Person1[4][0], R))
-        R = All_Resistors2.np.append(Data_Person2[i][0]/(Data_Person2[4][0] * (10**-6)))
+        All_Resistors2.np.append(Data_Person2[i][0]/(Data_Person2[4][0] * (10**-6)))
+        R = Data_Person2[i][0]/(Data_Person2[4][0] * (10**-6))
         All_Resistors2_Error.np.array(
             Calculate_Resistance_Error(Data_Person2[i][1], Data_Person2[i][0], Data_Person2[4][1], Data_Person2[4][0],
                                        R))
-        R = All_Resistors.np.append(Data_Person3[i][0]/(Data_Person3[4][0] * (10**-6)))
+        All_Resistors.np.append(Data_Person3[i][0]/(Data_Person3[4][0] * (10**-6)))
+        R = Data_Person3[i][0]/(Data_Person3[4][0] * (10**-6))
         All_Resistors3_Error.np.array(
             Calculate_Resistance_Error(Data_Person3[i][1], Data_Person3[i][0], Data_Person3[4][1], Data_Person3[4][0],
                                        R))
