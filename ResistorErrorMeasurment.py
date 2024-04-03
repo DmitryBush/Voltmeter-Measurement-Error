@@ -50,9 +50,30 @@ def Calculate_Resistance_R():
 
 
 def Koefficient_Calcul():
+
         All_Middle_Koef_For_R1.np.array(Calculate_Koef(All_Resistors1_Error[0], All_Resistors1_Error[0], All_Resistors2_Error[0],All_Resistors3_Error[0]))
+        All_Middle_Koef_For_R1.np.array(
+            Calculate_Koef(All_Resistors2_Error[0], All_Resistors1_Error[0], All_Resistors2_Error[0],
+                           All_Resistors3_Error[0]))
+        All_Middle_Koef_For_R1.np.array(
+            Calculate_Koef(All_Resistors3_Error[0], All_Resistors1_Error[0], All_Resistors2_Error[0],
+                           All_Resistors3_Error[0]))
+
         All_Middle_Koef_For_R2.np.array(Calculate_Koef(All_Resistors1_Error[1], All_Resistors1_Error[1], All_Resistors2_Error[1],All_Resistors3_Error[1]))
+        All_Middle_Koef_For_R2.np.array(
+            Calculate_Koef(All_Resistors2_Error[1], All_Resistors1_Error[1], All_Resistors2_Error[1],
+                           All_Resistors3_Error[1]))
+        All_Middle_Koef_For_R2.np.array(
+            Calculate_Koef(All_Resistors3_Error[1], All_Resistors1_Error[1], All_Resistors2_Error[1],
+                           All_Resistors3_Error[1]))
+
+
         All_Middle_Koef_For_R3.np.array(Calculate_Koef(All_Resistors1_Error[2], All_Resistors1_Error[2], All_Resistors2_Error[2],All_Resistors3_Error[2]))
+        All_Middle_Koef_For_R3.np.array(Calculate_Koef(All_Resistors2_Error[2], All_Resistors1_Error[2], All_Resistors2_Error[2],All_Resistors3_Error[2]))
+        All_Middle_Koef_For_R3.np.array(
+            Calculate_Koef(All_Resistors3_Error[2], All_Resistors1_Error[2], All_Resistors2_Error[2],
+                           All_Resistors3_Error[2]))
+
 
 
 def Calculate_Resistance_Error(dU_HAst, U, dIck, I, R):
