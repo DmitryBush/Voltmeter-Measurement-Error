@@ -110,50 +110,65 @@ for j in range(1, 4):
                                           error_resistors.get(f'resistor{j}')[2])
 
 print("Resistor 1:")
-print(f'Measurement 1 = {resistors.get("resistor1")[0]} '
-      f'Measurement 2 = {resistors.get("resistor1")[1]} '
-      f'Measurement 3 = {resistors.get("resistor1")[2]}')
 
-print(f'Measurement error 1 = {error_resistors.get("resistor1")[0]} '
-      f'Measurement error 2 = {error_resistors.get("resistor1")[1]} '
-      f'Measurement error 3 = {error_resistors.get("resistor1")[2]}')
+print("Measurement:")
+print(f'Measurement 1 = {resistors.get("resistor1")[0]}\n'
+      f'Measurement 2 = {resistors.get("resistor1")[1]}\n'
+      f'Measurement 3 = {resistors.get("resistor1")[2]}\n')
 
-print(f'Middle coefficient 1 = {middle_coefficient.get("middle_R1")[0]} '
-      f'Middle coefficient 2 = {middle_coefficient.get("middle_R1")[1]} '
-      f'Middle coefficient 3 = {middle_coefficient.get("middle_R1")[2]}')
+print("Measurement Error:")
+print(f'Measurement error 1 = {error_resistors.get("resistor1")[0]}\n'
+      f'Measurement error 2 = {error_resistors.get("resistor1")[1]}\n'
+      f'Measurement error 3 = {error_resistors.get("resistor1")[2]}\n')
 
+print("Middle Coefficient:")
+print(f'Middle coefficient 1 = {middle_coefficient.get("middle_R1")[0]}\n'
+      f'Middle coefficient 2 = {middle_coefficient.get("middle_R1")[1]}\n'
+      f'Middle coefficient 3 = {middle_coefficient.get("middle_R1")[2]}\n')
+
+print("Results:")
 print(f'Result_R1 = {true_resistors.get("resistor1")}\n'
       f'Result error R1 = {true_error_resistors.get("resistor1")}\n')
 
 
 print("Resistor 2:")
-print(f'Measurement 1 = {resistors.get("resistor2")[0]} '
-      f'Measurement 2 = {resistors.get("resistor2")[1]} '
-      f'Measurement 3 = {resistors.get("resistor2")[2]}')
 
-print(f'Measurement error 1 = {error_resistors.get("resistor2")[0]} '
-      f'Measurement error 2 = {error_resistors.get("resistor2")[1]} '
-      f'Measurement error 3 = {error_resistors.get("resistor2")[2]}')
+print("Measurement:")
+print(f'Measurement 1 = {resistors.get("resistor2")[0]}\n'
+      f'Measurement 2 = {resistors.get("resistor2")[1]}\n'
+      f'Measurement 3 = {resistors.get("resistor2")[2]}\n')
 
-print(f'Middle coefficient 1 = {middle_coefficient.get("middle_R2")[0]} '
-      f'Middle coefficient 2 = {middle_coefficient.get("middle_R2")[1]} '
-      f'Middle coefficient 3 = {middle_coefficient.get("middle_R2")[2]}')
+print("Measurement Error:")
+print(f'Measurement error 1 = {error_resistors.get("resistor2")[0]}\n'
+      f'Measurement error 2 = {error_resistors.get("resistor2")[1]}\n'
+      f'Measurement error 3 = {error_resistors.get("resistor2")[2]}\n')
 
+print("Middle Coefficient:")
+print(f'Middle coefficient 1 = {middle_coefficient.get("middle_R2")[0]}\n'
+      f'Middle coefficient 2 = {middle_coefficient.get("middle_R2")[1]}\n'
+      f'Middle coefficient 3 = {middle_coefficient.get("middle_R2")[2]}\n')
+
+print("Results:")
 print(f'Result R2 = {true_resistors.get("resistor2")}\n'
       f'Result error R2 = {true_error_resistors.get("resistor2")}\n')
 
 print("Resistor 3:")
-print(f'Measurement 1 = {resistors.get("resistor3")[0]} '
-      f'Measurement 2 = {resistors.get("resistor3")[1]} '
-      f'Measurement 3 = {resistors.get("resistor3")[2]}')
 
-print(f'Measurement error 1 = {error_resistors.get("resistor3")[0]} '
-      f'Measurement error 2 = {error_resistors.get("resistor3")[1]} '
-      f'Measurement error 3 = {error_resistors.get("resistor3")[2]}')
+print("Measurement:")
+print(f'Measurement 1 = {resistors.get("resistor3")[0]}\n'
+      f'Measurement 2 = {resistors.get("resistor3")[1]}\n'
+      f'Measurement 3 = {resistors.get("resistor3")[2]}\n')
 
-print(f'Middle coefficient 1 = {middle_coefficient.get("middle_R3")[0]} '
-      f'Middle coefficient 2 = {middle_coefficient.get("middle_R3")[1]} '
-      f'Middle coefficient 3 = {middle_coefficient.get("middle_R3")[2]}')
+print("Measurement Error:")
+print(f'Measurement error 1 = {error_resistors.get("resistor3")[0]}\n'
+      f'Measurement error 2 = {error_resistors.get("resistor3")[1]}\n'
+      f'Measurement error 3 = {error_resistors.get("resistor3")[2]}\n')
 
+print("Middle Coefficient:")
+print(f'Middle coefficient 1 = {middle_coefficient.get("middle_R3")[0]}\n'
+      f'Middle coefficient 2 = {middle_coefficient.get("middle_R3")[1]}\n'
+      f'Middle coefficient 3 = {middle_coefficient.get("middle_R3")[2]}\n')
+
+print("Results:")
 print(f'Result R3 = {true_resistors.get("resistor3")}\n'
       f'Result error R3 = {true_error_resistors.get("resistor3")}\n')
