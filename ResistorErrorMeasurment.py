@@ -30,7 +30,7 @@ true_error_resistors = {'resistor1': 0.0,
 def Calculate_Resistance_R():
     global resistors, error_resistors
     for i in range(1, 4, 1):
-        R = persons.get(f'Data_Person{i}')[1][0] / (persons.get(f'Data_Person{i}')[4][0] * (10 ** -6))
+        R = round(persons.get(f'Data_Person{i}')[1][0] / (persons.get(f'Data_Person{i}')[4][0] * (10 ** -6)), 0)
         resistors['resistor1'] = np.append(resistors.get('resistor1'), R)
         error_resistors['resistor1'] = np.append(error_resistors.get('resistor1'),
                                                  Calculate_Resistance_Error(persons.get(f'Data_Person{i}')[1][1],
@@ -80,8 +80,8 @@ def Koefficient_Calcul():
                                                                    error_resistors.get('resistor3')[2]))
 
 
-def Calculate_Resistance_Error(dU_HAst, U, dIck, I, R):
-    return R * math.sqrt((dU_HAst / U) ** 2 + (dIck / I) ** 2)
+def Calculate_Resistance_Error(dU_HAst, U, dI, I, R):
+    return round(R * math.sqrt((dU_HAst / U) ** 2 + (dI / I) ** 2), 0)
 
 
 def Calculate_Koef(Error_R, R1, R2, R3):
@@ -92,11 +92,11 @@ def Calculate_Result_Resistance(resistor_num):
     R = 0.0
     for i in range(3):
         R += middle_coefficient.get(f'middle_R{resistor_num}')[i] * resistors.get(f'resistor{resistor_num}')[i]
-    return R
+    return round(R, 0)
 
 
 def Calculate_Result_Error_Resistanse(R1, R2, R3):
-    return 1 / math.sqrt(1 / (R1 ** 2) + 1 / (R2 ** 2) + 1 / (R3 ** 2))
+    return round(1 / math.sqrt(1 / (R1 ** 2) + 1 / (R2 ** 2) + 1 / (R3 ** 2)), 0)
 
 
 Calculate_Resistance_R()
